@@ -57,4 +57,7 @@
     - name: Find files
       find:
         paths: /boot
-      
+      register: OUTPUT
+    - name: Print OUTPUT
+      debug:
+        msg: OUTPUT = {{OUTPUT}}
