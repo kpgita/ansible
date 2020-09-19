@@ -35,8 +35,8 @@
   hosts: all
   vars:
     URL: play.example.com
-  vars_files:
-    - vars011.yml
+#  vars_files:
+#    - vars01.yml
   tasks:
     - name: Print Variable
       debug:
@@ -51,3 +51,10 @@
 # 3. vars
 # 4. Inventory
 
+- name: Register Variables
+  hosts: all
+  tasks:
+    - name: Find files
+      find:
+        paths: /boot
+      
