@@ -35,8 +35,8 @@
   hosts: all
   vars:
     URL: play.example.com
-  vars_files:
-    - vars01.yml
+#  vars_files:
+#    - vars01.yml
   tasks:
     - name: Print Variable
       debug:
@@ -47,4 +47,5 @@
 ## vars, vars_files, inventory, tasks
 ## Lower the number higher the priority
 # 1. tasks
-#
+# 2. vars_files
+# 3.
