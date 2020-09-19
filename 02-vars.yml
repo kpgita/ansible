@@ -10,7 +10,18 @@
     - name: Print Variable from Task Declaration
       vars:
         URL: task.google.com
-      ## You can declare variable on task level, which the scope of this variable is only on task level.
+      ## You can declare variable on task level, which the scope of this variable is only on this task level.
       debug:
         msg: URL = {{URL}}
+      ## NOTE: task variables will override the play level variables.
+
+- name: Declare the variables in a file and access them
+  hosts: all
+  vars_files:
+    - vars01.yml
+  tasks:
+    - name: Print Variable
+      debug:
+        msg: URL = {{URL}}]
+
 
