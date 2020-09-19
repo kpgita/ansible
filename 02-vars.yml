@@ -35,8 +35,8 @@
   hosts: all
   vars:
     URL: play.example.com
-  vars_files:
-    - vars01.yml
+#  vars_files:
+#    - vars01.yml
   vars_prompt:
     - name: URL
       prompt: Enter URL
