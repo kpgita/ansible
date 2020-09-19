@@ -50,10 +50,12 @@
 ## Observations,
 ## vars, vars_files, inventory, tasks
 ## Lower the number higher the priority
+# 0. Command line arguments given as -e VAR=DATA
 # 1. tasks
 # 2. vars_files
-# 3. vars
-# 4. Inventory
+# 3. vars_prompt
+# 4. vars
+# 5. Inventory
 
 - name: Register Variables
   hosts: all
