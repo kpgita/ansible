@@ -45,8 +45,8 @@
     - name: Print Variable
       debug:
         msg: URL = {{URL}}
-      vars:
-        URL: task.example.com
+#      vars:
+#        URL: task.example.com
 ## Observations,
 ## vars, vars_files, inventory, tasks
 ## Lower the number higher the priority
