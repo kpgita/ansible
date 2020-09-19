@@ -48,4 +48,6 @@
 ## Lower the number higher the priority
 # 1. tasks
 # 2. vars_files
-# 3.
+# 3. vars
+# 4. Inventory
+
