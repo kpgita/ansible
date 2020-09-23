@@ -11,3 +11,13 @@
   include_role:
     name: common
     tasks_from: az-cli-setup
+
+- name: Create Artifact directory
+  file:
+    path: "{{ARTIFACT_PATH}}"
+    state: directory
+
+- name: Include Artifact Download Steps
+  include_role:
+    name: common
+    tasks_from: artifact-download
