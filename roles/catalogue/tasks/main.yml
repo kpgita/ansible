@@ -7,3 +7,7 @@
   user:
     name: roboshop
 
+- name: Include AZ CLI Installation Steps
+  include_role:
+    name: common
+    tasks_from: az-cli-setup
