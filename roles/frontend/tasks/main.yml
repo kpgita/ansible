@@ -9,5 +9,15 @@
     state: started
     enabled: yes
 
+- name: Copy Azure DevOps Repo file
+  copy:
+    src: azurecli.repo
+    dest: /etc/yum.repos.d
+
+- name: Install Azure CLI
+  yum:
+    name: [ "azure-cli", "libicu" ]
+    state: latest
+
 - name: Download Azure Artifacts
   shell: az artifacts universal download --organization "https://dev.azure.com/DevOps-Batches/" --project "ce99914a-0f7d-4c46-9ccc-e4d025115ea9" --scope project --feed "devopsb51" --name "frontend" --version "0.0.2" --path .
