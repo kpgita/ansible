@@ -3,21 +3,10 @@
     name: nginx
     state: latest
 
-- name: Copy Azure DevOps Repo file
-  copy:
-    src: azurecli.repo
-    dest: /etc/yum.repos.d
-
-- name: Install Azure CLI
-  yum:
-    name: [ "azure-cli", "libicu" ]
-    state: latest
-
-- name: Install Azure DevOps extension
-  shell: az extension add --name azure-devops
-
-- name: Login to Azure DevOps
-  shell: echo {{PAT}}  | az devops login --organization https://dev.azure.com/DevOps-Batches/
+- name: Include AZ CLI Installation Steps
+  include_role:
+    name: common
+    tasks_from: az-cli-setup
 
 - name: Remove old htdocs
   file:
@@ -29,8 +18,10 @@
     path: /usr/share/nginx/html
     state: directory
 
-- name: Download Azure Artifacts
-  shell: az artifacts universal download --organization "https://dev.azure.com/DevOps-Batches/" --project "ce99914a-0f7d-4c46-9ccc-e4d025115ea9" --scope project --feed "devopsb51" --name "frontend" --version "*" --path /usr/share/nginx/html
+- name: Include Artifact Download Steps
+  include_role:
+    name: common
+    tasks_from: artifact-download
 
 - name: Start Nginx Service
   systemd:
