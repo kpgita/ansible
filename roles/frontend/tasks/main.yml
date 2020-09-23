@@ -25,5 +25,15 @@
 - name: Login to Azure DevOps
   shell: echo {{PAT}}  | az devops login --organization https://dev.azure.com/DevOps-Batches/
 
+- name: Remove old htdocs
+  file:
+    path: /usr/share/nginx/html
+    state: absent
+
+- name: Create HtDocs Directory
+  file:
+    path: /usr/share/nginx/html
+    state: directory
+
 - name: Download Azure Artifacts
-  shell: mkdir -p /tmp/frontend ; az artifacts universal download --organization "https://dev.azure.com/DevOps-Batches/" --project "ce99914a-0f7d-4c46-9ccc-e4d025115ea9" --scope project --feed "devopsb51" --name "frontend" --version "*" --path /tmp/frontend
+  shell: az artifacts universal download --organization "https://dev.azure.com/DevOps-Batches/" --project "ce99914a-0f7d-4c46-9ccc-e4d025115ea9" --scope project --feed "devopsb51" --name "frontend" --version "*" --path /usr/share/nginx/html
