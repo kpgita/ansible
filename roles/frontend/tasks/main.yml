@@ -3,12 +3,6 @@
     name: nginx
     state: latest
 
-- name: Start Nginx Service
-  systemd:
-    name: nginx
-    state: started
-    enabled: yes
-
 - name: Copy Azure DevOps Repo file
   copy:
     src: azurecli.repo
@@ -37,3 +31,9 @@
 
 - name: Download Azure Artifacts
   shell: az artifacts universal download --organization "https://dev.azure.com/DevOps-Batches/" --project "ce99914a-0f7d-4c46-9ccc-e4d025115ea9" --scope project --feed "devopsb51" --name "frontend" --version "*" --path /usr/share/nginx/html
+
+- name: Start Nginx Service
+  systemd:
+    name: nginx
+    state: started
+    enabled: yes
